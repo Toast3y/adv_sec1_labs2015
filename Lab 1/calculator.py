@@ -21,43 +21,26 @@ def initialize(root):
 	mode = -1
 	number1 = 0
 	number2 = 0
-	screen = Label(root, justify="right", borderwidth="2", background="#00FF00", textvariable=screen_text)
-	screen.pack(padx="10", pady="10")
+	screen = Label(root, justify="right", borderwidth="2", background="#00FF00", textvariable=screen_text).grid(row=0)
 	screen_text.set("0")
 
 	#Add and pack Buttons
-	button_1 = Button(root, text="1", command = lambda: append_text(1))
-	button_2 = Button(root, text="2", command = lambda: append_text(2))
-	button_3 = Button(root, text="3", command = lambda: append_text(3))
-	button_4 = Button(root, text="4", command = lambda: append_text(4))
-	button_5 = Button(root, text="5", command = lambda: append_text(5))
-	button_6 = Button(root, text="6", command = lambda: append_text(6))
-	button_7 = Button(root, text="7", command = lambda: append_text(7))
-	button_8 = Button(root, text="8", command = lambda: append_text(8))
-	button_9 = Button(root, text="9", command = lambda: append_text(9))
-	button_0 = Button(root, text="0", command = lambda: append_text(0))
-	button_plus = Button(root, text="+", command = lambda: set_mode(0))
-	button_minus = Button(root, text="-", command = lambda: set_mode(1))
-	button_multiply = Button(root, text="*", command = lambda: set_mode(2))
-	button_divide = Button(root, text="/", command = lambda: set_mode(3))
-	button_equals = Button(root, text="=", command = equals)
-	button_clear = Button(root, text="Clear", command = clear_text)
-	button_1.pack()
-	button_2.pack()
-	button_3.pack()
-	button_4.pack()
-	button_5.pack()
-	button_6.pack()
-	button_7.pack()
-	button_8.pack()
-	button_9.pack()
-	button_0.pack()
-	button_plus.pack()
-	button_minus.pack()
-	button_multiply.pack()
-	button_divide.pack()
-	button_equals.pack()
-	button_clear.pack()
+	button_1 = Button(root, text="1", command = lambda: append_text(1)).grid(row=1, column=0)
+	button_2 = Button(root, text="2", command = lambda: append_text(2)).grid(row=1, column=1)
+	button_3 = Button(root, text="3", command = lambda: append_text(3)).grid(row=1, column=2)
+	button_4 = Button(root, text="4", command = lambda: append_text(4)).grid(row=2, column=0)
+	button_5 = Button(root, text="5", command = lambda: append_text(5)).grid(row=2, column=1)
+	button_6 = Button(root, text="6", command = lambda: append_text(6)).grid(row=2, column=2)
+	button_7 = Button(root, text="7", command = lambda: append_text(7)).grid(row=3, column=0)
+	button_8 = Button(root, text="8", command = lambda: append_text(8)).grid(row=3, column=1)
+	button_9 = Button(root, text="9", command = lambda: append_text(9)).grid(row=3, column=2)
+	button_0 = Button(root, text="0", command = lambda: append_text(0)).grid(row=4, column=0)
+	button_plus = Button(root, text="+", command = lambda: set_mode(0)).grid(row=2, column=3)
+	button_minus = Button(root, text="-", command = lambda: set_mode(1)).grid(row=3, column=3)
+	button_multiply = Button(root, text="*", command = lambda: set_mode(2)).grid(row=4, column=2)
+	button_divide = Button(root, text="/", command = lambda: set_mode(3)).grid(row=4, column=3)
+	button_equals = Button(root, text="=", command = equals).grid(row=4, column=1)
+	button_clear = Button(root, text="Clear", command = clear_text).grid(row=1, column=3)
 	
 def set_mode(setmode):
 	#Set the mode of the calculator function and store the first number
@@ -113,7 +96,6 @@ root = Tk()
 
 ##Modify root window
 root.title("Calculator")
-root.geometry("640x480")
 
 ##Initialize, Start main loop and render
 initialize(root)
