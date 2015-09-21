@@ -14,6 +14,7 @@ from ttk import *
 ##Define functions for use in application
 def initialize(root):
 	#create "screen" label and variable to display results
+	#Declare and initialize all global variables
 	global screen_text, working_number, number1, number2, mode
 	screen_text = StringVar()
 	working_number = ""
@@ -61,9 +62,15 @@ def initialize(root):
 def set_mode(setmode):
 	#Set the mode of the calculator function and store the first number
 	global working_number, number1, screen_text, mode
-	number1 = int(working_number)
-	mode = setmode
-	working_number = ""
+	
+	#Edge case: If you require minus numbers
+	if setmode == 1 and working_number == "":
+		working_number = "-"
+		screen_text.set(working_number)
+	else:
+		number1 = int(working_number)
+		mode = setmode
+		working_number = ""
 
 def equals():
 	#Use the mode to calculate the answer
@@ -87,7 +94,7 @@ def equals():
 	number2 = 0
 	
 def append_text(number):
-	#Handle numbers and update screen
+	#Handle numbers and update screen similar to a real world calculator people expect
 	global screen_text, working_number
 	working_number = (working_number + str(number))
 	screen_text.set(working_number)
@@ -101,13 +108,13 @@ def clear_text():
 	number2 = 0
 	screen_text.set("0")
 
-##Create layout objects
+##Create layout object
 root = Tk()
 
 ##Modify root window
 root.title("Calculator")
 root.geometry("640x480")
 
-##Start main loop and render
+##Initialize, Start main loop and render
 initialize(root)
 root.mainloop()
