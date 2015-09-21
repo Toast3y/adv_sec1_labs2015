@@ -21,7 +21,7 @@ def initialize(root):
 	mode = -1
 	number1 = 0
 	number2 = 0
-	screen = Label(root, justify="right", borderwidth="2", background="#00FF00", textvariable=screen_text).grid(row=0)
+	screen = Label(root, justify="right", borderwidth="2", background="#00FF00", textvariable=screen_text).grid(row=0, columnspan=4)
 	screen_text.set("0")
 
 	#Add and pack Buttons
