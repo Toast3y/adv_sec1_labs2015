@@ -50,6 +50,7 @@ def initialize(root):
 	Button(root, text="GenNum", command = generate_large_num).grid(row=5, column=0)
 	Button(root, text="GenNum2", command = generate_large_num2).grid(row=5, column=1)
 	Button(root, text="GenNPrimes", command = gen_n_primes).grid(row=5, column=2)
+	Button(root, text="FindNext", command = generate_next_prime).grid(row=5, column=3)
 	
 def set_mode(setmode):
 	#Set the mode of the calculator function and store the first number
@@ -126,13 +127,18 @@ def gen_n_primes():
 	tkMessageBox.showinfo("Large Number Generator List", str(LargeNumList))
 	
 	
-def generate_prime():
+def generate_next_prime():
 	#Find a prime number, then find the next number in order
 	PrimeNum = RandGet.getPrime(BLOCK_SIZE)
+	PrimeNum2 = get_next_prime(PrimeNum + 2)
+	tkMessageBox.showinfo("Next Prime Finder", str(PrimeNum) + " is a prime number, and " + str(PrimeNum2) + " is the next prime number after that.")
 	
-	
-def get_next_prime():
+def get_next_prime(possible_prime):
 	#Find the next number given a prime number
+	if RandGet.isPrime(possible_prime) == True:
+		return possible_prime
+	else:
+		get_next_prime(possible_prime + 2)
 
 ##Create layout object
 root = Tk()
