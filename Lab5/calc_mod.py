@@ -129,16 +129,17 @@ def gen_n_primes():
 	
 def generate_next_prime():
 	#Find a prime number, then find the next number in order
-	PrimeNum = RandGet.getPrime(BLOCK_SIZE)
+	PrimeNum = RandGen.getPrime(BLOCK_SIZE)
 	PrimeNum2 = get_next_prime(PrimeNum + 2)
 	tkMessageBox.showinfo("Next Prime Finder", str(PrimeNum) + " is a prime number, and " + str(PrimeNum2) + " is the next prime number after that.")
 	
 def get_next_prime(possible_prime):
-	#Find the next number given a prime number
-	if RandGet.isPrime(possible_prime) == True:
+	#Find the next number given a prime number, and return it
+	if RandGen.isPrime(possible_prime) == True:
 		return possible_prime
 	else:
-		get_next_prime(possible_prime + 2)
+		possible_prime = get_next_prime(possible_prime + 2)
+	return possible_prime
 
 ##Create layout object
 root = Tk()
